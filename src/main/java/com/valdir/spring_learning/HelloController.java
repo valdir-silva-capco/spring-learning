@@ -3,6 +3,7 @@ package com.valdir.spring_learning;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController 
 public class HelloController {
@@ -23,5 +24,17 @@ public class HelloController {
         @PathVariable Long id
     ) {
         return "User ID: " + id;
+    }
+
+    @GetMapping ("/search")
+    public String searchUser(
+        @RequestParam String name,
+        @RequestParam(required = false) Integer age
+    ) {
+        if (age == null) {
+            return "Searching user: " + name;
+        }
+
+        return "Searching user: " + name + ", Age: " + age;
     }
 }
