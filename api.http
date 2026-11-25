@@ -2,6 +2,6 @@ POST http://localhost:8080/person
 Content-Type: application/json
 
 {
-  "name": "Valdir",
-  "age": 35
+  "name": "Valdir Teste",
+  "age": 38
 }
