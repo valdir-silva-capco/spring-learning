@@ -1,5 +1,7 @@
 package com.valdir.spring_learning;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,5 +38,19 @@ public class HelloController {
         }
 
         return "Searching user: " + name + ", Age: " + age;
+    }
+
+    @GetMapping ("/person") 
+    public Person getPerson() {
+        return new Person("John", 30);
+    }
+
+    @GetMapping ("/people")
+    public List<Person> getPeople() {
+        return List.of(
+            new Person("Alice", 25),
+            new Person("Bob", 28),
+            new Person("Charlie", 32)
+        );
     }
 }
