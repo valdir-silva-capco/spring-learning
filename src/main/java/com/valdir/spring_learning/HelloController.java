@@ -8,9 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.valdir.spring_learning.service.PersonService;
 
 @RestController 
 public class HelloController {
+
+    private final PersonService personService;
+
+    public HelloController(PersonService personService) {
+        this.personService = personService;
+    }
+
     @GetMapping ("/")
     public String hello() {
         return "Hello World!";
@@ -51,7 +59,7 @@ public class HelloController {
     public Person createPerson(
         @RequestBody Person person
     ) {
-        return person;
+        return personService.createPerson(person);
     }
 
     @GetMapping ("/people")
